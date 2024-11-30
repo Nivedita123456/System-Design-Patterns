@@ -1,3 +1,13 @@
+import designpatterns.behavioural.chainresponsibility.DebugLoggingLevel;
+import designpatterns.behavioural.chainresponsibility.ErrorLoggingLevel;
+import designpatterns.behavioural.chainresponsibility.InfoLoggingLevel;
+import designpatterns.behavioural.chainresponsibility.LoggingLevel;
+import designpatterns.behavioural.command.Invoker;
+import designpatterns.behavioural.command.Reciever;
+import designpatterns.behavioural.command.TypeCommand;
+import designpatterns.behavioural.observer.*;
+import designpatterns.behavioural.strategy.Context;
+import designpatterns.behavioural.strategy.IStrategy.BubbleSortStrategy;
 import designpatterns.creational.Builder.Vehicle1;
 import designpatterns.creational.abstractFactory.AbstractVehicleFactory;
 import designpatterns.creational.abstractFactory.BrandFactory;
@@ -20,6 +30,7 @@ import designpatterns.structural.decorator.Pizza;
 import designpatterns.structural.proxy.IImage;
 import designpatterns.structural.proxy.ProxyImage;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,11 +44,12 @@ public class Main {
         AbstractVehicleFactory vehicleFactory = BrandFactory.getBrandInstance("Maruti");
         Vehicle vehicle = vehicleFactory.getVehicle("Bike");
         vehicle.drive();
-         */
-        /*Builder Design Pattern
-        Vehicle1 vehicle = new designpatterns.creational.Builder.Vehicle1.VehicleBuilder().setVehicleNumber("").setCost(1).build();
-        System.out.println(vehicle.getCost());
-         */
+
+        /*Builder Design Pattern*/
+//        Vehicle1 vehicle = new Vehicle1.VehicleBuilder().setVehicleNumber("").setCost(1).build();
+//        Vehicle1 vehicle1 = new Vehicle1.VehicleBuilder().build();
+//        System.out.println(vehicle.getCost());
+//        System.out.println(vehicle1.getCost());
         /*Adapter Design Pattern
         IAdapter iAdapter = new Adapter(new Adaptee());
         iAdapter.request();
@@ -61,6 +73,29 @@ public class Main {
         IImage image = new ProxyImage();
         image.displayImage();
         image.displayImage();
+         */
+        /*Command Design Pattern
+        Invoker invoker = new Invoker(new TypeCommand(new Reciever()));
+        invoker.invoke();
+        */
+        /*Chain Responsibility Pattern
+        LoggingLevel loggingLevel = new InfoLoggingLevel(new DebugLoggingLevel(new ErrorLoggingLevel(null)));
+        loggingLevel.logging("DEBUG", "Debugging Message");
+        */
+        /*Strategy Design Pattern
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        Context obj = new Context(new BubbleSortStrategy(), arrayList);
+        obj.sort();
+        */
+        /*Observer Design Pattern
+        List<Observer> observers= new ArrayList<>();
+        observers.add(new Observer("b1@gmail.com", 1));
+        observers.add(new Observer("b2@gmail.com", 1));
+        observers.add(new Observer("b2@gmail.com", 2));
+        IObservable observable = new ItemObservable(observers);
+        List<Item> reStockList = new ArrayList<>();
+        reStockList.add(new Bag(1, 2, 20));
+        observable.reStock(reStockList);
          */
     }
 }

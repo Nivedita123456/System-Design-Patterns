@@ -7,8 +7,10 @@ public class Vehicle1 {
     int milage;
     int cost;
     String vehicleNumber;
+    public Vehicle1(){
+    }
 
-    Vehicle1(VehicleBuilder builder){
+    public Vehicle1(VehicleBuilder builder){
         name = builder.name;
         type = builder.type;
         cost = builder.cost;
@@ -47,6 +49,9 @@ public class Vehicle1 {
         int milage;
         int cost;
         String vehicleNumber;
+        public VehicleBuilder(){
+            System.out.println("Constructor Called");
+        }
 
         public VehicleBuilder setName(String nameParam){
             name = nameParam;
